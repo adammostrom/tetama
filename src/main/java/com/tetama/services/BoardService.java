@@ -1,16 +1,17 @@
-package com.example.tetama.services;
+package com.tetama.services;
 
-import com.example.tetama.Board;
-import com.example.tetama.Task;
+import com.tetama.Board;
+import com.tetama.Task;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.tetama.utils.Tuple;
+import com.tetama.Board;
+import com.tetama.services.TaskService;
 
 public class BoardService {
   private TaskService taskService;
-  private  DatabaseService databaseService;
 
   /** A collection of boards, handled by the BoardService */
   Map <Integer, Board> boards;
@@ -18,14 +19,13 @@ public class BoardService {
 
   public BoardService(){
     this.taskService = new TaskService();
-    this.databaseService = new DatabaseService();
     this.boards = new HashMap<>();
     loadBoards();
   }
 
   // Load boards from the database and populate the map
   private void loadBoards() {
-    List<Board> boardList = databaseService.getAllBoards();
+    //List<Board> boardList = databaseService.getAllBoards();
     for (Board board : boardList) {
       boards.put(setId(), board);
     }

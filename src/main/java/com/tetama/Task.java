@@ -1,4 +1,6 @@
-package com.example.tetama;
+package com.tetama;
+
+import jdk.vm.ci.meta.Local;
 
 import java.time.LocalDate;
 
@@ -22,6 +24,10 @@ public class Task {
   /** optional parameter. */
   private final LocalDate date;
 
+  private final LocalDate startedDate;
+
+  private final LocalDate endedDate;
+
   private Task(TaskBuilder builder) {
     this.boardId = builder.boardId;
     this.id = builder.id;
@@ -29,6 +35,8 @@ public class Task {
     this.label = builder.label;
     this.date = builder.date;
     this.priority = builder.priority;
+    this.startedDate = builder.startedDate;
+    this.endedDate = builder.endedDate;
   }
 
   public int getBoardId() {
@@ -55,6 +63,11 @@ public class Task {
     return this.description;
   }
 
+  public LocalDate getStartedDate(){return this.startedDate; }
+
+  public LocalDate getEndedDate(){return this.endedDate; }
+
+
   public static class TaskBuilder {
 
     /** Required parameter. assigned by handler */
@@ -68,6 +81,9 @@ public class Task {
 
     /** Required parameter. */
     private final String label;
+    private LocalDate startedDate;
+
+    private LocalDate endedDate;
 
     /** Optional parameter. */
     private Priority priority;
@@ -87,8 +103,18 @@ public class Task {
       return this;
     }
 
-    public TaskBuilder setDate(LocalDate date) {
+    public TaskBuilder setTodoDate(LocalDate date) {
       this.date = date;
+      return this;
+    }
+
+    public TaskBuilder setStartedDate(LocalDate startedDate){
+      this.startedDate = startedDate;
+      return this;
+    }
+
+    public TaskBuilder setEndedDate(LocalDate endedDate){
+      this.endedDate = endedDate;
       return this;
     }
 

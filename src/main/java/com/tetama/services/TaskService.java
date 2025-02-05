@@ -1,7 +1,7 @@
-package com.example.tetama.services;
+package com.tetama.services;
 
-import com.example.tetama.Priority;
-import com.example.tetama.Task;
+import com.tetama.Priority;
+import com.tetama.Task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -9,10 +9,8 @@ import java.util.ArrayList;
 
 public class TaskService {
 
-  private final DatabaseService databaseService;
 
   public TaskService() {
-    this.databaseService = new DatabaseService();
   }
   private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -40,13 +38,13 @@ public class TaskService {
     builder = new Task.TaskBuilder(boardId, taskId, description, label);
 
     if (date != null) {
-      builder.setDate(date);
+      builder.setTodoDate(date);
     }
     if (priority != null) {
       builder.setPriority(priority);
     }
     Task task = builder.build();
-    databaseService.insertTask(task);
+    //databaseService.insertTask(task);
     return task;
   }
 

@@ -1,4 +1,4 @@
-package com.example.tetama;
+package com.tetama;
 
 import com.example.tetama.services.BoardService;
 import com.example.tetama.services.TaskService;

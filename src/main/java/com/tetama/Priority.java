@@ -1,4 +1,4 @@
-package com.example.tetama;
+package com.tetama;
 
 public enum Priority {
 
