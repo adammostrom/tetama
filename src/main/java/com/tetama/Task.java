@@ -28,6 +28,9 @@ public class Task {
 
   private final LocalDate endedDate;
 
+  private boolean started;
+  private boolean finished;
+
   private Task(TaskBuilder builder) {
     this.boardId = builder.boardId;
     this.id = builder.id;
@@ -37,6 +40,8 @@ public class Task {
     this.priority = builder.priority;
     this.startedDate = builder.startedDate;
     this.endedDate = builder.endedDate;
+    this.started = builder.started;
+    this.finished = builder.ended;
   }
 
   public int getBoardId() {
@@ -67,6 +72,12 @@ public class Task {
 
   public LocalDate getEndedDate(){return this.endedDate; }
 
+  public boolean isStarted() { return started; }
+  public boolean isFinished() { return finished; }
+
+  public void setStarted(boolean started) { this.started = started; }
+  public void setFinished(boolean finished) { this.finished = finished; }
+
 
   public static class TaskBuilder {
 
@@ -90,6 +101,9 @@ public class Task {
 
     /** optional parameter. */
     private LocalDate date;
+
+    private boolean started;
+    private boolean ended;
 
     public TaskBuilder(int boardId, int id, String description, String label) {
       this.boardId = boardId;
@@ -118,6 +132,15 @@ public class Task {
       return this;
     }
 
+    public TaskBuilder setStarted(){
+      this.started = true;
+      return this;
+    }
+
+    public TaskBuilder setEnded(){
+      this.ended = true;
+      return this;
+    }
     public Task build() {
       return new Task(this);
     }
